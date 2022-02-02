@@ -10,15 +10,16 @@ t_3d_vector new_vector(float x, float y, float z)
 	return (vec);
 }
 
-float vector_length(t_3d_vector vec) {
-	
+float vector_length(t_3d_vector vec)
+{
+	return sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
 t_3d_vector normalize_vector(t_3d_vector vec)
 {
 	float length;
 
-	length = sqrtf(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+	length = vector_length(vec);
 
 	vec.x /= length;
 	vec.y /= length;

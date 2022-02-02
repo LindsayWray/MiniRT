@@ -5,6 +5,7 @@
 
 t_3d_vector new_vector(float x, float y, float z);
 
+float vector_length(t_3d_vector vec);
 t_3d_vector substract_vector(t_3d_vector point, t_3d_vector origin);
 t_3d_vector add_vector(t_3d_vector v1, t_3d_vector v2);
 t_3d_vector normalize_vector(t_3d_vector vec);
