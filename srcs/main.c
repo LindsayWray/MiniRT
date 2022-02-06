@@ -11,6 +11,13 @@ int	close_window(t_minirt *minirt)
 	exit(EXIT_SUCCESS);
 }
 
+int	key_hook(int key, t_minirt *minirt)
+{
+	if (key == 53)
+		close_window(minirt);
+	return (0);
+}
+
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, t_color color)
 {
@@ -28,7 +35,7 @@ int	main(int argc, char **argv)
 	t_minirt minirt;
 	int 	fd;
 	t_scene scene;
-	int		window_size = 100;
+	int		window_size = 500;
 
 	if (argc != 2 || !ends_with(argv[1], ".rt")) 
 		file_error("Please provide a correct filename\n");
@@ -39,10 +46,10 @@ int	main(int argc, char **argv)
 	}
 	scene = parse_file(fd);
 	close(fd);
-	correction_camera_position(&scene);
-	printf("AMBIENT: brightness: %f, Color %d,%d,%d\n", 
-		scene.ambient.brightness,
-		scene.ambient.color.r, scene.ambient.color.g,scene.ambient.color.b);
+	//correction_camera_position(&scene);
+	// printf("AMBIENT: brightness: %f, Color %d,%d,%d\n", 
+	// 	scene.ambient.brightness,
+	// 	scene.ambient.color.r, scene.ambient.color.g,scene.ambient.color.b);
 	// printf("CAMERA: angle: %d, coordinates %f,%f,%f, orientation %f,%f,%f\n", 
 	// 	scene.camera.field_of_view, 
 	// 	scene.camera.coordinates.x, scene.camera.coordinates.y, scene.camera.coordinates.z, 
@@ -92,7 +99,8 @@ int	main(int argc, char **argv)
 		x = 0;
 		while (x < window_size)
 		{
-			ray = calculate_ray(x, window_size - y, window_size, scene.camera);
+			//printf("X: %d, Y: %d\n", x, y);
+			ray = calculate_ray(x, window_size - y - 1, window_size, scene.camera);
 			pixel_color = calculate_pixel_color(ray, scene);
 			my_mlx_pixel_put(&minirt.img, x, y, pixel_color);
 			x++;
@@ -102,6 +110,7 @@ int	main(int argc, char **argv)
 
 	mlx_put_image_to_window(minirt.mlx, minirt.mlx_win, minirt.img.img, 0, 0);
 	mlx_hook(minirt.mlx_win, 17, 1L << 17, close_window, &minirt);
+	mlx_key_hook(minirt.mlx_win, key_hook, &minirt);
 
 	mlx_loop(minirt.mlx);
 

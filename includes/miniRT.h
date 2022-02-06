@@ -111,5 +111,8 @@ t_ray	calculate_ray(int x, int y, int window_size, t_camera camera);
 t_color calculate_pixel_color(t_ray ray, t_scene scene);
 
 float	intersect_sphere(t_ray ray, t_sphere sphere);
+float	intersect_plane(t_ray ray, t_plane plane);
+float	intersect_cy(t_ray ray, t_cylinder cylinder);
+float	intersect_cylinder_side(t_ray ray, t_cylinder cylinder);
 
 #endif
