@@ -8,6 +8,8 @@ int	close_window(t_minirt *minirt)
 	//free_scene(scene); TODO 
 	//free_images(); TODO
 	mlx_destroy_window(minirt->mlx, minirt->mlx_win);
+	system("leaks miniRT");
+	printf("coming through here\n");
 	exit(EXIT_SUCCESS);
 }
 
@@ -35,7 +37,7 @@ int	main(int argc, char **argv)
 	t_minirt minirt;
 	int 	fd;
 	t_scene scene;
-	int		window_size = 500;
+	int		window_size = 700;
 
 	if (argc != 2 || !ends_with(argv[1], ".rt")) 
 		file_error("Please provide a correct filename\n");
@@ -114,6 +116,6 @@ int	main(int argc, char **argv)
 
 	mlx_loop(minirt.mlx);
 
-	// system("leaks miniRT");
+	system("leaks miniRT");
 }
 
