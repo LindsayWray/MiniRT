@@ -3,4 +3,8 @@ libmlx.dylib
 .vscode/
 miniRT
 .DS_Store
+mlx/mlx_image.swiftsourceinfo
+mlx/mlx_init.swiftsourceinfo
+mlx/mlx_window.swiftsourceinfo
+mlx/*.o
 .gitignore
