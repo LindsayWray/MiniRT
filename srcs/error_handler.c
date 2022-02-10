@@ -5,20 +5,20 @@
 /*                                                     +:+                    */
 /*   By: lwray <lwray@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/08/15 16:59:26 by lwray         #+#    #+#                 */
-/*   Updated: 2021/08/15 16:59:28 by lwray         ########   odam.nl         */
+/*   Created: 2022/02/10 09:10:45 by lwray         #+#    #+#                 */
+/*   Updated: 2022/02/10 09:10:47 by lwray         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-void	parsing_error()
+void	parsing_error(void)
 {
 	ft_putstr_fd("Error: incorrect scene input\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
-void	malloc_error()
+void	malloc_error(void)
 {
 	perror("Malloc failed");
 	exit(EXIT_FAILURE);

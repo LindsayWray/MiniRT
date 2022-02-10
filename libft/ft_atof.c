@@ -19,6 +19,22 @@ static int	too_large_number(int sign)
 	return (-1);
 }
 
+static int	get_sign(const char *str, int *i)
+{
+	int			sign;
+
+	sign = 1;
+	while (ft_is_whitespace(str[*i]))
+		(*i)++;
+	if (str[*i] == '+' || str[*i] == '-')
+	{
+		if (str[*i] == '-')
+			sign = sign * (-1);
+		(*i)++;
+	}
+	return (sign);
+}
+
 float	ft_atof(const char *str)
 {
 	float		res;
@@ -29,15 +45,7 @@ float	ft_atof(const char *str)
 
 	i = 0;
 	res = 0;
-	sign = 1;
-	while (ft_is_whitespace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = sign * (-1);
-		i++;
-	}
+	sign = get_sign(str, &i);
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (res > __LONG_MAX__)
@@ -45,11 +53,11 @@ float	ft_atof(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	if (str[i] == '.') 
+	if (str[i] == '.')
 	{
 		decimals = ft_atoi(str + i + 1);
 		dec_len = ft_strlen((char *)str + i + 1);
-		while(dec_len--)
+		while (dec_len--)
 			decimals /= 10;
 		res += decimals;
 	}

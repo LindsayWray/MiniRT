@@ -34,6 +34,8 @@ SRCS := ft_atoi.c \
 	ft_tolower.c \
 	ft_isalnum.c \
 	ft_is_whitespace.c \
+	ft_is_float.c \
+	ft_is_uint.c \
 	ft_memccpy.c \
 	ft_putchar_fd.c \
 	ft_strdup.c \

@@ -7,13 +7,22 @@ HEADERFILES := 	includes/miniRT.h \
 				includes/color.h
 SRCS := srcs/main.c \
 		srcs/parsing.c \
-		srcs/parse_objects.c \
+		srcs/parse_shapes.c \
+		srcs/parse_object_properties.c \
 		srcs/error_handler.c \
 		srcs/cleanup.c \
 		srcs/raytracing.c \
+		srcs/smallest_above_zero.c \
 		srcs/intersect.c \
+		srcs/intersect_cylinder.c \
 		srcs/vector.c \
-		srcs/color.c
+		srcs/vector_calculations.c \
+		srcs/color.c \
+		srcs/inside_objects.c \
+		srcs/normal.c \
+		srcs/calculate_pixel_color.c \
+		srcs/calculate_light_color.c \
+		srcs/draw.c
 
 FLAGS := -Wall -Wextra -Werror
 OBJFILES := $(SRCS:srcs/%.c=obj/%.o)

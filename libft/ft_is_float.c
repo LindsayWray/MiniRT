@@ -1,42 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cleanup.c                                          :+:    :+:            */
+/*   ft_is_float.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lwray <lwray@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/02/10 09:10:11 by lwray         #+#    #+#                 */
-/*   Updated: 2022/02/10 09:10:13 by lwray         ########   odam.nl         */
+/*   Created: 2021/10/02 20:44:19 by lwray         #+#    #+#                 */
+/*   Updated: 2021/10/02 20:44:20 by lwray         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/miniRT.h"
+#include "libft.h"
 
-int	free_array(char **strs)
+int	ft_is_float(char *str)
 {
 	int	i;
 
+	if (!str || !ft_strlen(str))
+		return (0);
 	i = 0;
-	while (strs[i])
+	if (str[i] == '-')
+		i++;
+	while (i < ft_strlen(str))
 	{
-		free (strs[i]);
+		if (!ft_isdigit(str[i]))
+			break ;
 		i++;
 	}
-	free (strs);
-	return (-1);
-}
-
-void	free_scene(t_scene scene)
-{
-	free(scene.spheres);
-	free(scene.planes);
-	free(scene.cylinders);
-}
-
-int	close_window(t_minirt *minirt)
-{
-	free_scene(minirt->scene);
-	mlx_destroy_image(minirt->mlx, minirt->img.img);
-	mlx_destroy_window(minirt->mlx, minirt->mlx_win);
-	exit(EXIT_SUCCESS);
+	if (str[i] == '\0')
+		return (1);
+	if (str[i] == '.')
+	{
+		i++;
+		return (ft_is_uint(str + i));
+	}
+	return (0);
 }

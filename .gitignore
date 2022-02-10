@@ -3,3 +3,4 @@ libmlx.dylib
 .vscode/
 miniRT
 .DS_Store
+.gitignore
