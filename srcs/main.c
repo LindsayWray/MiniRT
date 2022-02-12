@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	t_scene	scene;
 
 	if (argc != 2 || !ends_with(argv[1], ".rt"))
-		file_error("Please provide a correct filename\n");	
+		file_error("Please provide a correct filename\n");
 	if (WINDOW_SIZE < 0 || WINDOW_SIZE > 1200)
 		file_error("Incorrect window size\n");
 	fd = open(argv[1], O_RDONLY);
