@@ -27,6 +27,21 @@ t_3d_vector	sphere_normal(
 	return (normal);
 }
 
+t_3d_vector	plane_normal(
+	t_plane plane, t_3d_vector hitpoint, t_3d_vector camera_coordinates)
+{
+	t_3d_vector	normal;
+	float		dp;
+
+	normal = plane.orientation;
+	dp = dot_product(
+			normalize_vector(substract_vector(camera_coordinates, hitpoint)),
+			plane.orientation);
+	if (dp < 0)
+		normal = multiply_vector(normal, -1);
+	return (normal);
+}
+
 t_3d_vector	cylinder_normal(
 	t_cylinder cy, t_3d_vector hitpoint, t_3d_vector camera_coordinates)
 {

@@ -7,6 +7,7 @@ HEADERFILES := 	includes/miniRT.h \
 				includes/color.h
 SRCS := srcs/main.c \
 		srcs/parsing.c \
+		srcs/parse_scene.c \
 		srcs/parse_shapes.c \
 		srcs/parse_object_properties.c \
 		srcs/error_handler.c \

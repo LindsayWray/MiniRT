@@ -14,17 +14,17 @@
 #include "../includes/vector.h"
 #include "../includes/color.h"
 
+// 0.01 => small difference to make sure a point is
+// not shaded by itself due to rounding
 static void	check_dist(float *old_distance, float new_distance)
 {
-	if (new_distance > 0.01)
+	if (new_distance > 0.001)
 	{
 		if (*old_distance == -1 || new_distance < *old_distance)
 			*old_distance = new_distance;
 	}
 }
 
-// 0.01 => small difference to make sure a point is
-// not shaded by itself due to rounding
 static float	has_shade(t_ray light_ray, t_scene scene)
 {
 	float	distance;

@@ -20,9 +20,9 @@
 
 # include <mlx.h>
 # include "../libft/libft.h"
-# include "error_handler.h"
 
 # define ESC_KEY 53
+# define WINDOW_SIZE 700
 
 typedef struct s_3d_vector {
 	float	x;
@@ -88,8 +88,11 @@ typedef struct s_cylinder
 
 typedef struct s_scene {
 	t_ambient	ambient;
+	int			ambient_count;
 	t_camera	camera;
+	int			camera_count;
 	t_light		light;
+	int			light_count;
 	t_sphere	*spheres;
 	int			spheres_count;
 	t_plane		*planes;
@@ -139,6 +142,8 @@ int			inside_sphere(t_sphere sphere, t_3d_vector coordinates);
 int			inside_cylinder(t_cylinder cy, t_3d_vector coordinates);
 
 t_3d_vector	sphere_normal(t_sphere sphere, t_3d_vector hitpoint,
+				t_3d_vector camera_coordinates);
+t_3d_vector	plane_normal(t_plane plane, t_3d_vector hitpoint,
 				t_3d_vector camera_coordinates);
 t_3d_vector	cylinder_normal(t_cylinder cy, t_3d_vector hitpoint,
 				t_3d_vector camera_coordinates);

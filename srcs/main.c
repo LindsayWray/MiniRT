@@ -12,21 +12,23 @@
 
 #include "../includes/miniRT.h"
 #include "../includes/parsing.h"
-#include "../includes/cleanup.h"
 
 int	main(int argc, char **argv)
 {
 	int		fd;
 	t_scene	scene;
-	int		window_size;
 
-	window_size = 500;
 	if (argc != 2 || !ends_with(argv[1], ".rt"))
-		file_error("Please provide a correct filename\n");
+		file_error("Please provide a correct filename\n");	
+	if (WINDOW_SIZE < 0 || WINDOW_SIZE > 1200)
+		file_error("Incorrect window size\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		perror("Could not open scene file");
+	{
+		perror("Error\nCould not open scene file");
+		exit(EXIT_FAILURE);
+	}
 	scene = parse_file(fd);
 	close(fd);
-	draw_window(scene, window_size);
+	draw_window(scene, WINDOW_SIZE);
 }

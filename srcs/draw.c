@@ -36,8 +36,17 @@ void	put_pixel_in_mlx_image(t_data *data, int x, int y, t_color color)
 void	init_mlx(t_minirt *minirt, t_scene scene, int size)
 {
 	minirt->mlx = mlx_init();
+	if (!minirt->mlx)
+		mlx_error(scene);
 	minirt->mlx_win = mlx_new_window(minirt->mlx, size, size, "miniRT");
+	if (!minirt->mlx_win)
+		mlx_error(scene);
 	minirt->img.img = mlx_new_image(minirt->mlx, size, size);
+	if (!minirt->img.img)
+	{
+		mlx_destroy_window(minirt->mlx, minirt->mlx_win);
+		mlx_error(scene);
+	}
 	minirt->img.addr = mlx_get_data_addr(minirt->img.img,
 			&minirt->img.bits_per_pixel,
 			&minirt->img.line_length, &minirt->img.endian);

@@ -10,30 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/cleanup.h"
 #include "../includes/miniRT.h"
 
-void	parsing_error(void)
+void	parsing_error(t_scene scene)
 {
-	ft_putstr_fd("Error: incorrect scene input\n", STDERR_FILENO);
+	free_scene(scene);
+	ft_putstr_fd("Error\n incorrect scene input\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
 void	malloc_error(void)
 {
-	perror("Malloc failed");
+	perror("Error\n Malloc failed");
 	exit(EXIT_FAILURE);
 }
 
 void	file_error(char *error_message)
 {
-	ft_putstr_fd("Error: ", STDERR_FILENO);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	ft_putstr_fd(error_message, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
 
-// void	mlx_error(void **fields, int len)
-// {
-// 	perror("Error: mlx error");
-// 	free_fields(fields, len);
-// 	exit(EXIT_FAILURE);
-// }
+void	mlx_error(t_scene scene)
+{
+	free_scene(scene);
+	ft_putstr_fd("Error\nCould not start miniLibX", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}

@@ -26,7 +26,7 @@ int	parse_color(char *str, t_color *color)
 	i = 0;
 	while (i < 3)
 	{
-		if (!rgb[i] || !ft_is_uint(rgb[i]))
+		if (!ft_is_uint(rgb[i]))
 			return (free_array(rgb));
 		i++;
 	}
@@ -53,7 +53,7 @@ int	parse_coordinates(char *str, t_3d_vector *coordinates)
 	i = 0;
 	while (i < 3)
 	{
-		if (!xyz[i] || !ft_is_float(xyz[i]))
+		if (!ft_is_float(xyz[i]))
 			return (free_array(xyz));
 		i++;
 	}

@@ -50,7 +50,8 @@ void	hit_planes(t_ray ray, t_scene scene, t_object_hit *hit)
 			hit->distance = d;
 			hit->coordinates = add_vector(ray.origin,
 					multiply_vector(ray.direction, -1 * d));
-			hit->normal = scene.planes[i].orientation;
+			hit->normal = plane_normal(scene.planes[i],
+					hit->coordinates, scene.camera.coordinates);
 			hit->object_color = scene.planes[i].color;
 		}
 		i++;
@@ -102,6 +103,7 @@ void	hit_cylinders_sides(t_ray ray, t_scene scene, t_object_hit *hit)
 }
 
 //hit distance < 0 ==>  no object hit, results in a black pixel
+// hit is the closest object that is hit by the ray
 t_color	calculate_pixel_color(t_ray ray, t_scene scene)
 {
 	t_color			ambient;

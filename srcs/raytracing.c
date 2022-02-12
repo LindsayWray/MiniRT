@@ -15,7 +15,7 @@
 
 // based on x and y in MLX image
 // and camera properties (cooridnates, orientation and field of view)
-// create a light ray (imaginary line in 3D) 
+// create a ray (imaginary line in 3D) 
 // coming from the camera with a certain direction
 // z==0 && x==0: fix for top-down view
 t_ray	calculate_ray(int x, int y, int window_size, t_camera camera)

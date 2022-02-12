@@ -13,8 +13,11 @@
 #ifndef ERROR_HANDLER_H
 # define ERROR_HANDLER_H
 
+# include "miniRT.h"
+
 void	file_error(char *error_message);
 void	malloc_error(void);
-void	parsing_error(void);
+void	parsing_error(t_scene scene);
+void	mlx_error(t_scene scene);
 
 #endif

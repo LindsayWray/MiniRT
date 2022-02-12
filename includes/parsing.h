@@ -15,6 +15,7 @@
 
 # include "miniRT.h"
 # include "cleanup.h"
+# include "error_handler.h"
 # include <fcntl.h>
 
 t_scene	parse_file(int fd);
@@ -31,4 +32,7 @@ int		parse_cylinder(char **words, t_scene *scene);
 int		parse_plane(char **words, t_scene *scene);
 int		parse_sphere(char **words, t_scene *scene);
 
+int		parse_light(char **strs, t_scene *scene);
+int		parse_camera(char	**strs, t_scene *scene);
+int		parse_ambient(char	**strs, t_scene *scene);
 #endif

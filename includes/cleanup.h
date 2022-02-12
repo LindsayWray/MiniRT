@@ -15,7 +15,8 @@
 
 # include "miniRT.h"
 
-int	free_array(char **words);
-int	close_window(t_minirt *minirt);
+int		free_array(char **words);
+int		close_window(t_minirt *minirt);
+void	free_scene(t_scene scene);
 
 #endif
